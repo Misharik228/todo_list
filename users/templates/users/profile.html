@@ -1,0 +1,54 @@
+{% extends 'todo/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title mb-4">Профиль пользователя</h2>
+                <div class="content-section">
+                    <div class="profile-info">
+                        <h4>{{ user.username }}</h4>
+                        <p class="text-secondary">{{ user.email }}</p>
+                    </div>
+                    <hr>
+                    <div class="task-stats mt-3">
+                        <h5>Статистика задач:</h5>
+                        <div class="row text-center mt-3">
+                            <div class="col-md-4">
+                                <div class="card bg-light">
+                                    <div class="card-body">
+                                        <h3 class="card-title">{{ total_tasks }}</h3>
+                                        <p class="card-text">Всего задач</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card bg-success text-white">
+                                    <div class="card-body">
+                                        <h3 class="card-title">{{ completed_tasks }}</h3>
+                                        <p class="card-text">Выполнено</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card bg-warning">
+                                    <div class="card-body">
+                                        <h3 class="card-title">{{ pending_tasks }}</h3>
+                                        <p class="card-text">В процессе</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <a href="{% url 'task-list' %}" class="btn btn-primary me-2">Мои задачи</a>
+                        <a href="{% url 'task-create' %}" class="btn btn-success">Создать задачу</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
